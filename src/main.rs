@@ -100,7 +100,7 @@ fn parse_html(html: &str) -> color_eyre::Result<(Vec<(String, String)>, String)>
 }
 
 fn get_help_message<'a>() -> &'a str {
-    "Usage: ./quizlet-anki-export <Quizlet-Url> <(Output-File.apkg)>"
+    "Usage: ./quizlet2anki <Quizlet-Url> <(Output-File.apkg)>"
 }
 fn get_stealth_headers() -> HeaderMap {
     let mut headers = HeaderMap::new();
