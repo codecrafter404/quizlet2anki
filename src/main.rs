@@ -107,11 +107,10 @@ fn get_stealth_headers() -> HeaderMap {
     headers.insert("User-Agent", HeaderValue::from_static("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.50 Safari/537.36)"));
     headers
 }
-fn write_cards_to_file(file: &str, title: &str, cards: &Vec<(String, String)>) -> color_eyre::Result<()> {
+fn write_cards_to_file(file: &str, title: &str, cards: &[(String, String)]) -> color_eyre::Result<()> {
     let model = genanki_rs::basic_and_reversed_card_model();
     let notes = cards
-        .clone()
-        .into_iter()
+        .iter()
         .map(|x| Note::new(model.clone(), vec![&x.0, &x.1]).expect("Invalid card"))
         .collect::<Vec<_>>();
     let mut deck = Deck::new(
